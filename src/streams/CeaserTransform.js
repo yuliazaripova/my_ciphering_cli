@@ -19,7 +19,7 @@ class CeaserTransform extends Transform {
       this.push(resultString);
       callback();
     } catch (err) {
-      // console.err(err)
+      process.stderr.write(err.message);
     }
   }
 }
