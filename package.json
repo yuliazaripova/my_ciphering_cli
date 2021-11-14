@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/yuliazaripova/my_ciphering_cli/issues"
   },
-  "homepage": "https://github.com/yuliazaripova/my_ciphering_cli#readme"
+  "homepage": "https://github.com/yuliazaripova/my_ciphering_cli#readme",
+  "devDependencies": {
+    "eslint": "^8.2.0"
+  }
 }
