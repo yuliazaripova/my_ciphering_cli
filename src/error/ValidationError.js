@@ -24,7 +24,7 @@ class ArgsDuplicatedError extends ValidationError {
 }
 class FileMissingError extends ValidationError {
   constructor(file) {
-    super(`Отсутсвует ${file}`);
+    super(`Файл ${file} недоступен`);
     this.name = "FileMissingError";
     this.file = file
   }

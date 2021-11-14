@@ -3,7 +3,6 @@ const { exit } = require("process");
 const { ReadableStream } = require("./src/streams/ReadableStream")
 const { WritableStream } = require("./src/streams/WritableStream")
 const { createStreams } = require("./src/entities/createStreams")
-const { ValidationError } = require("./src/error/ValidationError")
 const { validateInput, checkFileExists} = require("./src/argsValidation");
 
 let cipher, input, output
@@ -18,18 +17,16 @@ try {
   exit(1)
 }
 
-
-
-const res = createStreams(cipher)
+const streams = createStreams(cipher)
 
 const rs =  !Boolean(input) ? process.stdin : new ReadableStream(input)
 const ws = !Boolean(output) ? process.stdout : new WritableStream(output)
 
-pipeline(rs, ...res, ws, err => {
+pipeline(rs, ...streams, ws, err => {
     if (err) {
       process.stderr.write(`Error: "${err.message}"`)
       exit(1)
     } else {
       exit()
     }
-  });
+});

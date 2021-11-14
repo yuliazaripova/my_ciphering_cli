@@ -10,7 +10,7 @@ class CeaserTransform extends Transform {
   }
   _transform(chunk, encoding, callback) {
     try {
-      const resultString = cipherMessage(chunk.toString(), cipher.caesar, this.operation, 1)
+      const resultString = cipherMessage(chunk.toString().trim(), cipher.caesar, this.operation, 1)
       this.push(resultString)
       callback()
     } catch (err) {
