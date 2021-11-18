@@ -7,16 +7,18 @@ const { validateInput, checkFileExists} = require("./src/argsValidation");
 
 let cipher, input, output
 
-try {
-  ({ cipher, input, output } = validateInput())
-  Boolean(input) && checkFileExists(input)
-  Boolean(output) && checkFileExists(output)
+const main = () => {
+  try {
+    ({ cipher, input, output } = validateInput())
+    Boolean(input) && checkFileExists(input)
+    Boolean(output) && checkFileExists(output)
 
-} catch (e) {
-  process.stderr.write(`Error: "${e.message}"`)
-  exit(1)
+  } catch (e) {
+    process.stderr.write(`Error: "${e.message}"`)
+    exit(1)
+  }
 }
-
+main()
 const streams = createStreams(cipher)
 
 const rs =  !Boolean(input) ? process.stdin : new ReadableStream(input)
@@ -30,3 +32,7 @@ pipeline(rs, ...streams, ws, err => {
       exit()
     }
 });
+
+module.exports = {
+  main
+}

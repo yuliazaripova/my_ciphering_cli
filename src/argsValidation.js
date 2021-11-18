@@ -7,6 +7,7 @@ const {
 } = require("./errors/ValidationError");
 const { args, fullAgs } = require("./constants");
 
+
 const grab = (flag) => {
   const index = process.argv.indexOf(flag) + 1;
   if (index === 0) return undefined;
@@ -61,4 +62,7 @@ const checkFileExists = (file) => {
 module.exports = {
   validateInput,
   checkFileExists,
+  validateArgCount,
+  matchCipher,
+  validateConfig
 };
