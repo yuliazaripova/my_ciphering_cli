@@ -1,6 +1,6 @@
 const { cipher, operation } = require("./constants");
 
-const getFirstCode = (letter) => {
+const getFirstAndLastCodes = (letter) => {
   const ascii = letter.charCodeAt(0);
   if (ascii >= 65 && ascii <= 90) {
     return { firstCode: 65, lastCode: 90 };
@@ -11,7 +11,7 @@ const getFirstCode = (letter) => {
 };
 
 const cipherLetter = (letter, _cipher, flag, shift) => {
-  const { firstCode, lastCode } = getFirstCode(letter);
+  const { firstCode, lastCode } = getFirstAndLastCodes(letter);
   if (_cipher === cipher.atbash) {
     return String.fromCharCode(lastCode - (letter.charCodeAt(0) - firstCode));
   }
@@ -37,5 +37,7 @@ const cipherMessage = (phrase, _cipher, flag, shift) => {
 };
 
 module.exports = {
+  cipherLetter,
   cipherMessage,
+  getFirstAndLastCodes,
 };
