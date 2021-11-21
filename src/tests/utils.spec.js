@@ -1,5 +1,32 @@
-const { getFirstAndLastCodes, cipherMessage } = require("../utils")
+const { getFirstAndLastCodes, cipherMessage, cipherLetter } = require("../utils")
 
+describe("cipherLetter", () => {
+    it("should return a letter with a shift to right for ceasar type to encode", () => {
+        const res = cipherLetter(
+          "a",
+          "C",
+          "1",
+          1
+        );
+        expect(res).toEqual("b")
+    })
+    it("should return a letter with a shift to left for ceasar type to decode", () => {
+        const res = cipherLetter(
+          "a",
+          "C",
+          "0",
+          1
+        );
+        expect(res).toEqual("z")
+    })
+    it("should return a opposite letter for atbash type", () => {
+        const res = cipherLetter(
+          "a",
+          "A",
+        );
+        expect(res).toEqual("z")
+    })
+})
 describe("getFirstAndLastCodes", () => {
     it("should return an object with first and last code of alphabet for lowercase letter", () => {
         const res = getFirstAndLastCodes("a")
