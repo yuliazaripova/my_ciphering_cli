@@ -31,7 +31,7 @@ describe('my_ciphering_cli', () => {
       done();
     });
   });
-  it('should correctly encode anf decode data (exp4)', (done) => {
+  it('should correctly encode anf decode data (exp4)',  (done) => {
     const cp = spawn('node', ['my_ciphering_cli', '-c', 'C1-R1-C0-C0-A-R0-R1-R1-A-C1']);
     cp.stdin.write(MESSAGE);
     cp.stdout.on('data', function (data) {
