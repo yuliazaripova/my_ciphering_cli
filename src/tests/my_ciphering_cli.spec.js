@@ -106,7 +106,7 @@ describe("my_ciphering_cli error scenarios", () => {
       done();
     });
   });
-  it("should show error if any args are dublicated", (done) => {
+  it("should show error if any args are duplicated", (done) => {
     const cp = spawn("node", [
       "my_ciphering_cli",
       "-c",

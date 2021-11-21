@@ -26,7 +26,7 @@ const INVALID_CONFIG = "-c C1-C1-A-R";
 jest.mock("fs");
 
 describe("checkFileExists", () => {
-  it("should throw FileMissingError if input doesnt exist", () => {
+  it("should throw FileMissingError if input doesn't exist", () => {
     process.argv.push(
       "node",
       "my_ciphering_cli",
@@ -36,7 +36,7 @@ describe("checkFileExists", () => {
     fs.existsSync.mockReturnValue(false);
     expect(() => checkFileExists(input)).toThrow(new FileMissingError(input));
   });
-  it("should correctly encode anf decode data (exp)", () => {
+  it("should throw FileMissingError if output doesn't exist", () => {
     process.argv.push(
       "node",
       "my_ciphering_cli",
@@ -76,7 +76,7 @@ describe("validateArgCount", () => {
     process.argv.push("node", "my_ciphering_cli", ...WITHOUT_CONFIG.split(" "));
     expect(() => validateInput()).toThrow(new ConfigRequiredError());
   });
-  it("should throw ConfigNotValidError if any arg are duplicated", () => {
+  it("should throw ConfigNotValidError if config is not valid", () => {
     process.argv.push("node", "my_ciphering_cli", ...INVALID_CONFIG.split(" "));
     expect(() => validateInput()).toThrow(new ConfigNotValidError());
   });
@@ -99,7 +99,7 @@ describe("validateConfig", () => {
   it("should return true for config that matches pattern {XY(-)}n", () => {
     expect(validateConfig("C1-C1-A-R0")).toBeTruthy();
   });
-  it("should return true for config that that doesn't match pattern {XY(-)}n", () => {
+  it("should return true for config that doesn't match pattern {XY(-)}n", () => {
     expect(validateConfig("C1-C1-A2-R0")).toBeFalsy();
   });
 });
