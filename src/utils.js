@@ -39,5 +39,5 @@ const cipherMessage = (phrase, _cipher, flag, shift) => {
 module.exports = {
   cipherLetter,
   cipherMessage,
-  getFirstAndLastCodes
+  getFirstAndLastCodes,
 };
