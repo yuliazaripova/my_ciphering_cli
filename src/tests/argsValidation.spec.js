@@ -2,7 +2,7 @@ const {   ConfigRequiredError,
   ArgsDuplicatedError,
   ConfigNotValidError,
   FileMissingError, } = require("../errors/ValidationError");
-const { validateArgCount, validateInput, validateConfig, matchCipher } = require("../argsValidation")
+const { validateArgCount, validateInput, validateConfig, matchCipher, checkFileExists } = require("../argsValidation")
 
 afterEach(() => {
   process.argv = []
@@ -60,3 +60,14 @@ describe("validateConfig", () => {
     expect(validateConfig("C1-C1-A2-R0")).toBeFalsy()
   })
 })
+
+// const str1 = ` -c "C1-C1-R0-A" -i "./input.txt" -o "./output.txt"`
+// jest.mock('fs');
+// describe("validateArgCount", () => {
+//   it("should return true if any arg is duplicated", () => {
+//      process.argv.push('node', 'my_ciphering_cli', ...str1.split(" "));
+//     // fs.readFileSync.mockImplementation(() => {});
+//     fs.readFileSync.mockResolvedValue(JSON.stringify({"some" : "data"}))
+//     expect(() => checkFileExists("./input.js")).toThrow(new FileMissingError("./input.js"))
+//   })
+// })
